@@ -42,20 +42,51 @@ app.get('/', function homepage(req, res) {
  * JSON API Endpoints
  */
 
-app.get('/api', function api_index(req, res) {
+app.get('/api', function apiIndex(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    woopsIForgotToDocumentAllMyEndpoints: false, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/denzalereese/express-personal-api/README.md", // CHANGE ME
+    baseUrl: "http://pure-beach-28009.herokuapp.com", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "POST", path: "/api/todos", description: "Shows all of my todos"} // CHANGE ME
     ]
   })
 });
+
+app.get('/api/profile', function profileIndex(req, res) {
+  res.json({
+    name: 'Wolf',
+    githubLink: 'http://github.com/denzalereese',
+    githubProfileImage: 'http://imgur.com/QhuCpS6',
+    personalSiteLink: 'http://denzalereese.github.io',
+    currentCity: 'San Francisco, CA',
+    pets: []
+  })
+})
+
+app.get('api/todos', function todosIndex(req, res) {
+  res.json();
+})
+
+app.get('api/todos/:id', function todosShow(req, res) {
+  res.json();
+})
+
+app.post('api/todos/:id', function todosCreate(req, res) {
+  res.json();
+})
+
+app.put('api/todos/:id', function todosUpdate(req, res) {
+  res.json();
+})
+
+app.delete('api/todos/:id', function todosDelete(req, res) {
+  res.json();
+})
 
 /**********
  * SERVER *
