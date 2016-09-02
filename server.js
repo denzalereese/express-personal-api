@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -68,23 +68,28 @@ app.get('/api/profile', function profileIndex(req, res) {
   })
 })
 
-app.get('api/todos', function todosIndex(req, res) {
+app.get('/api/todos', function todosIndex(req, res) {
+  db.Todo.find(function(err, todos) {
+    if(err) {
+      return console.log("index error: " + err);
+    }
+    res.json(todos);
+  })
+})
+
+app.get('/api/todos/:id', function todosShow(req, res) {
   res.json();
 })
 
-app.get('api/todos/:id', function todosShow(req, res) {
+app.post('/api/todos', function todosCreate(req, res) {
   res.json();
 })
 
-app.post('api/todos/:id', function todosCreate(req, res) {
+app.put('/api/todos/:id', function todosUpdate(req, res) {
   res.json();
 })
 
-app.put('api/todos/:id', function todosUpdate(req, res) {
-  res.json();
-})
-
-app.delete('api/todos/:id', function todosDelete(req, res) {
+app.delete('/api/todos/:id', function todosDelete(req, res) {
   res.json();
 })
 
